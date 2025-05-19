@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Search, Home, Users, Briefcase, MessageCircle, Bell, User } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,8 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const Header = () => {
   const isMobile = useIsMobile();
+  const location = useLocation();
+  const currentPath = location.pathname;
   
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
@@ -30,12 +32,12 @@ const Header = () => {
           </div>
           
           <nav className="flex items-center gap-1 md:gap-2">
-            <NavItem icon={<Home />} text="Home" to="/" active />
-            <NavItem icon={<Users />} text="Network" to="/network" />
-            <NavItem icon={<Briefcase />} text="Jobs" to="/jobs" />
-            {!isMobile && <NavItem icon={<MessageCircle />} text="Messaging" to="/messaging" />}
-            <NavItem icon={<Bell />} text="Notifications" to="/notifications" />
-            <NavItem icon={<User />} text="Me" to="/profile" />
+            <NavItem icon={<Home />} text="Home" to="/" active={currentPath === '/'} />
+            <NavItem icon={<Users />} text="Network" to="/network" active={currentPath === '/network'} />
+            <NavItem icon={<Briefcase />} text="Jobs" to="/jobs" active={currentPath === '/jobs'} />
+            {!isMobile && <NavItem icon={<MessageCircle />} text="Messaging" to="/messaging" active={currentPath === '/messaging'} />}
+            <NavItem icon={<Bell />} text="Notifications" to="/notifications" active={currentPath === '/notifications'} />
+            <NavItem icon={<User />} text="Me" to="/profile" active={currentPath === '/profile'} />
             
             {isMobile && (
               <Button variant="ghost" size="icon" className="md:hidden">
