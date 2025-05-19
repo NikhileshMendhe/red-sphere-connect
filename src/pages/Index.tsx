@@ -5,6 +5,7 @@ import LeftSidebar from '@/components/LeftSidebar';
 import RightSidebar from '@/components/RightSidebar';
 import PostCreate from '@/components/PostCreate';
 import PostFeed from '@/components/PostFeed';
+import FeatureShowcase from '@/components/FeatureShowcase';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
@@ -19,6 +20,7 @@ const Index = () => {
           <LeftSidebar />
           
           <main className="flex-1 min-w-0">
+            <FeatureShowcase />
             <PostCreate />
             <PostFeed />
           </main>
