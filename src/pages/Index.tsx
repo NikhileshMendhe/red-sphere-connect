@@ -6,6 +6,8 @@ import RightSidebar from '@/components/RightSidebar';
 import PostCreate from '@/components/PostCreate';
 import PostFeed from '@/components/PostFeed';
 import FeatureShowcase from '@/components/FeatureShowcase';
+import AppInfo from '@/components/AppInfo';
+import Chatbot from '@/components/Chatbot';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
@@ -19,10 +21,14 @@ const Index = () => {
         <div className="flex gap-6">
           <LeftSidebar />
           
-          <main className="flex-1 min-w-0">
+          <main className="flex-1 min-w-0 space-y-6">
             <FeatureShowcase />
             <PostCreate />
             <PostFeed />
+            <AppInfo />
+            <div className="fixed bottom-6 right-6 z-40">
+              <Chatbot />
+            </div>
           </main>
           
           <RightSidebar />
